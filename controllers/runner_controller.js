@@ -58,11 +58,11 @@ module.exports = function (app) {
                 location: req.body.location,
                 totalTime: req.body.totalTime,
                 RunnerId: req.user.id
-            })
-            //            .then(function () {
-            //            res.redirect(307, "/");
-            //        })
-            .catch(function (err) {
+            }).then(function () {
+            console.log("runapi redirect")
+                res.redirect(307, "/api/run_created");
+            }).catch(function (err) {
+            console.log("runapi err")
                 console.log(err);
                 res.json(err);
             });

@@ -16,7 +16,10 @@ module.exports = function (app) {
     app.post("/api/runner_created", isAuthenticated, function (req, res) {
         res.json("/members");
     });
-
+    
+    app.post("/api/run_created", isAuthenticated, function (req, res) {
+        res.json("/all_runs");
+    });
 
     app.get("/api/user_data", function (req, res) {
         if (!req.user) {

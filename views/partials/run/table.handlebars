@@ -1,0 +1,71 @@
+<!--Temp based on geolocation -->
+            <div class="container" id="run-data-container">
+                {{#each Run}}<span>
+                        <div class="columns">
+                            <div class="column">
+                                <label>Date: {{this.dateTime}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Location: {{this.location}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Temperature:{{this.temperature}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Wind Speed: {{this.windMPH}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Dew Point: {{this.dewPoint}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Distance: {{this.distance}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Duration:{{this.totalTime}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Actual Pace:{{this.averagePace}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Base Pace:{{this.tempPace}}</label>
+                            </div>
+
+                        </div>
+                    </span> {{/each}}
+
+            </div>
+            <div class="container" id="run-data-container">
+                {{#each Run}}<span>
+                        <div class="columns">
+                            <div class="column">
+                                <p>Date: {{this.dateTime}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Location: {{this.location}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Temperature:{{this.temperature}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Wind Speed: {{this.windMPH}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Dew Point: {{this.dewPoint}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Distance: {{this.distance}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Duration:{{this.totalTime}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Actual Pace:{{this.averagePace}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Base Pace:{{this.tempPace}}</p>
+                            </div>
+
+                        </div>
+                    </span> {{/each}}
+
+            </div>
