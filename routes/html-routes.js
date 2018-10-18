@@ -11,20 +11,6 @@ module.exports = function (app) {
         }
         res.render("landing");
     });
-
-//    app.get("/login", function (req, res) {
-//        if (req.user) {
-//            res.redirect("/members");
-//        }
-//        res.render("login");
-//    });
-
-//    app.get("/", function (req, res) {
-//        if (req.user) {
-//            res.redirect("/members");
-//        }
-//        res.render("signup");
-//    });
     
     app.get("/create", isAuthenticated, function (req, res) {
         

@@ -152,6 +152,7 @@
         <div id="race-header">
         </div>
         <!-- Start Race time info -->
+        <form class="create_run">
         <div class="columns">
             <div class="field column">
                 <input placeholder="00" id="p-run-hours" type="text" class="validate" maxlength="3">
@@ -195,26 +196,27 @@
             </div>
         </div>
         <div class="columns">
-            <button class="close-modal btn pulse blue waves-effect waves-light column" id="calculate-button">Calculate</button>
+            <button class="close-modal column" id="calculate-button" type="submit">Calculate</button>
             {{!-- <a href="/members">
                 <div class="btn  blue waves-effect waves-light column" id="reset-button">Reset </div>
             </a></div> --}}
 
         </div>
+        </form>
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
 <!--</div>-->
 
 <!-- END MODAL STRUCTURE -->
-
-<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
+<script type="text/javascript" src="./js/agtables.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-<script type="text/javasript" src="js/darksky.js"></script>
-<script type="text/javasript" src="js/riegel.js"></script>
+<script type="text/javascript" src="js/darksky.js"></script>
+<script type="text/javascript" src="js/riegel.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/scriptsTest.js"></script>
-<script type="text/javascript" src="js/members.js"></script>
 <script type="text/javascript" src="js/bulma.js"></script>
 <script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="js/create_run.js"></script>

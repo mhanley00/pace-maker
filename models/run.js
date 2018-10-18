@@ -6,55 +6,55 @@ module.exports = function (sequelize, DataTypes) {
 
             distance: {
                 type: DataTypes.DECIMAL,
-                allowNull: false,
+//                allowNull: false,
                 validate: {}
             },
             totalTime: {
-                type: DataTypes.DECIMAL(5,2),
-                allowNull: false,
+                type: DataTypes.DECIMAL,
+//                allowNull: false,
                 validate: {}
             },
             averagePace: {
-                type: DataTypes.DECIMAL(5,2),
-                allowNull: false,
+                type: DataTypes.DECIMAL,
+//                allowNull: false,
                 validate: {}
             },
             agPercent: {
                 type: DataTypes.DECIMAL,
-                allowNull: false,
+//                allowNull: false,
                 validate: {
-                    isDecimal: true,
+//                    isDecimal: true,
                 }
             },
             dateTime: {
                 type: DataTypes.DATE,
-                allowNull: false,
+//                allowNull: false,
                 validate: {}
             },
             location: {
                 type: DataTypes.STRING,
-                allowNull: true,
+//                allowNull: true,
                 validate: {
-                    len: [1, 100]
+//                    len: [1, 100]
                 }
             },
             temperature: {
                 type: DataTypes.DECIMAL,
-                allowNull: true,
+//                allowNull: true,
                 validate: {}
             },
             tempPace: {
                 type: DataTypes.DECIMAL,
-                allowNull: true,
+//                allowNull: true,
                 validate: {}
             },
             windMPH: {
                 type: DataTypes.DECIMAL,
-                allowNull: true
+//                allowNull: true
             },
             dewPoint: {
                 type: DataTypes.DECIMAL,
-                allowNull: true,
+//                allowNull: true,
                 validate: {}
             }
 
@@ -63,7 +63,7 @@ module.exports = function (sequelize, DataTypes) {
     Run.associate = function(models) {
         Run.belongsTo(models.Runner, {
             foreignKey: {
-                allowNull: false
+//                allowNull: false
             }
         });
     };

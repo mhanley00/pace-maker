@@ -46,6 +46,27 @@ module.exports = function (app) {
             res.json(err);
         });
     });
+    
+    app.post("/api/create_run", function (req, res) {
+        console.log("runapi")
+        console.log(req.body);
+        db.Run.create({
+            distance: req.body.distance,
+            dewPoint: req.body.dewPoint,
+            temperature: req.body.temperature,
+            windMPH: req.body.windMPH,
+            location: req.body.location,
+            totalTime: req.body.totalTime,
+            RunnerId: req.user.id
+        })
+//            .then(function () {
+//            res.redirect(307, "/");
+//        })
+            .catch(function (err) {
+            console.log(err);
+            res.json(err);
+        });
+    });    
 
 
     app.get("/members", isAuthenticated, function (req, res) {
@@ -63,6 +84,7 @@ module.exports = function (app) {
                     //            runs: dbruns
                 };
                 console.log(req.user)
+                console.log(data)
                 return res.render("members", data);
 
                 // INCLUDE ERROR HANDLING: IF NO DATA, REDIRECT TO LOGIN
@@ -71,21 +93,79 @@ module.exports = function (app) {
     });
 
 
-    //WORKING ROUTE from runController.js in old project files
-    //    app.get("/runner", function(res,req) {
-    //        db.Run.findAll({
-    //            include: [db.Runner],
-    //            order: [
-    //                ["dateTime", "ASC"]
-    //            ]
-    //        }).then(function(dbRuns) {
-    //            
-    //            var data = {
-    //                runs: dbRuns
-    //            };
-    //            return res.render("dashboard", data);
-    //        });
-    //    
-    //});
+   app.get("/members", isAuthenticated, function (req, res) {
+    db.User.findAll({
+            where: {
+                id: req.user.id
+            }
+        })
+        .then(function (dbUser) {
+            console.log("dbUser");
+            console.log(dbUser);
+
+            db.Runner.findAll({
+                    where: {
+                        UserId: req.user.id
+                    }
+                })
+                .then(function (dbRunner) {
+                    console.log("dbRunner");
+                    console.log(dbRunner);
+                    var data = {
+                        User: dbUser,
+                        Runner: dbRunner,
+                        //            runs: dbruns
+                    };
+                    console.log(req.user)
+                    console.log(data)
+                    return res.render("members", data);
+                });
+
+//        });
+
+
+    // INCLUDE ERROR HANDLING: IF NO DATA, REDIRECT TO LOGIN
+
+});
+
+//        db.Runner.findAll({
+//                where: {
+//                    UserId: req.user.id
+//                }
+//            })
+//            .then(function (dbRunner) {
+//                console.log("dbRunner");
+//                console.log(dbRunner);
+//                var data = {
+////                    User: dbUser,
+//                    Runner: dbRunner,
+//                    //            runs: dbruns
+//                };
+//                console.log(req.runner)
+//                return res.render("members", data);
+//
+//                // INCLUDE ERROR HANDLING: IF NO DATA, REDIRECT TO LOGIN
+//
+//            });
+
+});
+
+
+//WORKING ROUTE from runController.js in old project files
+//    app.get("/runner", function(res,req) {
+//        db.Run.findAll({
+//            include: [db.Runner],
+//            order: [
+//                ["dateTime", "ASC"]
+//            ]
+//        }).then(function(dbRuns) {
+//            
+//            var data = {
+//                runs: dbRuns
+//            };
+//            return res.render("dashboard", data);
+//        });
+//    
+//});
 
 };
