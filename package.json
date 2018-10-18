@@ -1,6 +1,6 @@
 {
-    "name": "run_commuter",
-    "version": "1.0.0",
+    "name": "pace-maker",
+    "version": "2.0.0",
     "description": "*find your pace*",
     "main": "server.js",
     "scripts": {
@@ -10,15 +10,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mhanley00/run_commuter.git"
+        "url": "git+https://github.com/mhanley00/pace-maker.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/mhanley00/run_commuter/issues"
+        "url": "https://github.com/mhanley00/pace-maker/issues"
     },
-    "homepage": "https://github.com/mhanley00/run_commuter#readme",
+    "homepage": "https://github.com/mhanley00/pace-maker#readme",
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
         "body-parser": "^1.15.2",
