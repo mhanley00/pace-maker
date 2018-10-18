@@ -1,250 +1,206 @@
-<div class="navbar-fixed">
-    <nav class="nav-wrapper blue">
-        <div class="container">
-            <a href="#" class="brand-logo">PaceMaker</a>
+<nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <h1>PaceMaker</h1>
+        </a>
 
-            <!-- Creating a toggle menu  -->
-            <!-- Data-target needs to equal the id of the links you want -->
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-            <a href="#" class="sidenav-trigger" data-target="drop-link">
-                <i class="material-icons">Menu</i>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a href="/members" class="navbar-item">
+                Home
             </a>
 
-            <!-- Class right moves the UL to the right -->
-            <!-- class hide-on-med makes the list items toggle.  -->
+            <a href="/all_runs" class="navbar-item">
+                Runs
+            </a>
 
-            <ul class="right hide-on-med-and-down">
-                <li>
-                    <a href="/members">Home</a>
-                </li>
-                <li>
-                    <a href="/all_runs">All Runs</a>
-                </li>
-                <li>
-                    <!-- Modal Trigger in normal nav bar-->
-                    <button data-target="modal1" class="btn modal-trigger">Add a Run</button>
-                </li>
-                <li>
-                    <a class="navbar-brand" href="/logout">
-                        Logout
-                    </a>
-                </li>
-            </ul>
         </div>
-    </nav>
-</div>
 
-<ul class="sidenav" id="drop-link">
-    <li>
-        <a href="">Home</a>
-    </li>
-    <li>
-        <a href="/all_runs">All Runs</a>
-    </li>
-    <li>
-        <!-- Modal Trigger in Side Bar -->
-        <button data-target="modal1" class="btn modal-trigger">Add a Run</button>
-    </li>
-    <li>
-        <a class="navbar-brand" href="/logout">
-            Logout</a>
-    </li>
-</ul>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
 
-{{!-- WELCOME MESSAGE --}}
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h4>Your Run History</h4>
-            <hr>
+                    <a data-target="modal1" class="button is-danger modal-trigger" id="showModal">
+                        Add a Run
+                    </a>
+
+                    <a href="/logout" class="button is-light">
+                        Log Out
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-{{!-- END WELCOME MESSAGE --}}
+</nav>
 
 
+{{!-- MAIN BODY --}}
+<section class="hero is-light is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <h2 class="subtitle">Your Run History</h2>
+            <hr>
+
+            <!--Temp based on geolocation -->
+            <div class="container" id="run-data-container">
+                {{#each Runs}}<span>
+                        <div class="columns">
+                            <div class="column">
+                                <label>Date: {{this.dateTime}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Location: {{this.location}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Temperature:{{this.temperature}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Wind Speed: {{this.windMPH}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Dew Point: {{this.dewPoint}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Distance: {{this.distance}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Duration:{{this.totalTime}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Actual Pace:{{this.averagePace}}</label>
+                            </div>
+                            <div class="column">
+                                <label>Base Pace:{{this.tempPace}}</label>
+                            </div>
+
+                        </div>
+                    </span> {{/each}}
+
+            </div>
+            <div class="container" id="run-data-container">
+                {{#each Runs}}<span>
+                        <div class="columns">
+                            <div class="column">
+                                <p>Date: {{this.dateTime}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Location: {{this.location}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Temperature:{{this.temperature}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Wind Speed: {{this.windMPH}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Dew Point: {{this.dewPoint}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Distance: {{this.distance}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Duration:{{this.totalTime}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Actual Pace:{{this.averagePace}}</p>
+                            </div>
+                            <div class="column">
+                                <p>Base Pace:{{this.tempPace}}</p>
+                            </div>
+
+                        </div>
+                    </span> {{/each}}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- END MAIN BODY --}}
 
 
 <!-- MODAL STRUCTURE -->
+<!--<div class="container" id="app">-->
 <div id="modal1" class="modal">
-    <div class="modal-content">
+    <div class="modal-background"></div>
+    <div class="modal-content box">
         <h5 class="flow-text">Enter Race Info:</h5>
         <div id="race-header">
         </div>
         <!-- Start Race time info -->
-        <div class="row">
-            <div class="input-field col s4 m4 l4">
+        <div class="columns">
+            <div class="field column">
                 <input placeholder="00" id="p-run-hours" type="text" class="validate" maxlength="3">
                 <label for="p-run-hours">Hour(s)</label>
             </div>
-            <div class="input-field col s4 m4 l4">
+            <div class="field column">
                 <input placeholder="00" id="p-run-mins" type="text" class="validate" maxlength="2">
                 <label for="p-run-mins">Minute(s)</label>
             </div>
-            <div class="input-field col s4 m4 l4">
+            <div class="field column">
                 <input placeholder="00" id="p-run-secs" type="text" class="validate" maxlength="2">
                 <label for="p-run-secs">Second(s)</label>
             </div>
-            <!-- End Race time info -->
-            <!-- Start Race dist + weather info -->
-            <div class="row">
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="00 " id="p-run-dist" type="text" class="validate" maxlength="4">
-                    <label for="p-run-dist"> Race Distance (Miles)</label>
-                </div>
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="i.e. 63" id="p-dew" type="text" class="validate" maxlength="3">
-                    <label for="p-dew">Race Dewpoint</label>
-                </div>
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="i.e. " id="p-temp" type="text" class="validate" maxlength="3">
-                    <label for="p-temp">Race Temperature (F)</label>
-                </div>
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="00" id="p-wind-mph" type="text" class="validate" maxlength="3">
-                    <label for="p-wind-mph"> Wind Speed (MPH)</label>
-                </div>
+        </div>
+        <!-- End Race time info -->
+        <!-- Start Race dist + weather info -->
+        <div class="columns">
+            <div class="field column">
+                <input placeholder="00 " id="p-run-dist" type="text" class="validate" maxlength="4">
+                <label for="p-run-dist"> Race Distance (Miles)</label>
             </div>
-
+            <div class="field column">
+                <input placeholder="i.e. 63" id="p-dew" type="text" class="validate" maxlength="3">
+                <label for="p-dew">Race Dewpoint</label>
+            </div>
+            <div class="field column">
+                <input placeholder="i.e. " id="p-temp" type="text" class="validate" maxlength="3">
+                <label for="p-temp">Race Temperature (F)</label>
+            </div>
+            <div class="field column">
+                <input placeholder="00" id="p-wind-mph" type="text" class="validate" maxlength="3">
+                <label for="p-wind-mph"> Wind Speed (MPH)</label>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="input-field col s4 m4 l4">
+
+        <div class="columns">
+            <div class="field column">
                 <input placeholder="City,State" id="run-location" type="text" class="validate">
                 <label for="current-location">Enter Run Location</label>
             </div>
         </div>
-        <div class="row">
-            <div class="modal-close btn pulse blue waves-effect waves-light col s12 m3 l3" id="calculate-button">Calculate</div>
+        <div class="columns">
+            <button class="close-modal btn pulse blue waves-effect waves-light column" id="calculate-button">Calculate</button>
             {{!-- <a href="/members">
-                <div class="btn  blue waves-effect waves-light col s12 m2 l2" id="reset-button">Reset </div>
+                <div class="btn  blue waves-effect waves-light column" id="reset-button">Reset </div>
             </a></div> --}}
 
         </div>
     </div>
+    <button class="modal-close is-large" aria-label="close"></button>
 </div>
+<!--</div>-->
 
-<!-- Start Main Section -->
-
-<!--Temp based on geolocation -->
-<div class="container" id="run-data-container">
-    {{#each Runs}}<span>
-    <div class="row">
-        <div class="col s12 m1 l1">
-          <label>Date: {{this.dateTime}}</label> 
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Location: {{this.location}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Temperature:{{this.temperature}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Wind Speed: {{this.windMPH}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Dew Point: {{this.dewPoint}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Distance: {{this.distance}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Duration:{{this.totalTime}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Actual Pace:{{this.averagePace}}</label>
-        </div>
-        <div class="col s12 m1 l1">
-            <label>Base Pace:{{this.tempPace}}</label>
-        </div>
-
-    </div>
-</span> {{/each}}
-
-</div>
-<div class="container" id="run-data-container">
-    {{#each Runs}}<span>
-    <div class="row">
-        <div class="col s12 m1 l1">
-          <p>Date: {{this.dateTime}}</p> 
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Location: {{this.location}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Temperature:{{this.temperature}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Wind Speed: {{this.windMPH}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Dew Point: {{this.dewPoint}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Distance: {{this.distance}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Duration:{{this.totalTime}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Actual Pace:{{this.averagePace}}</p>
-        </div>
-        <div class="col s12 m1 l1">
-            <p>Base Pace:{{this.tempPace}}</p>
-        </div>
-
-    </div>
-</span> {{/each}}
-
-</div>
+<!-- END MODAL STRUCTURE -->
 
 
-
-
-<!-- Script CDNS -->
 {{!--
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>-->
-{{!-- MOMENT JS --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-<script>
-    // Need this for the side nav bar to be responsive.
-    // Put at the end of the html
-    $(document).ready(function () {
-        $('.sidenav').sidenav();
-    });
-    $('.dropdown-trigger').dropdown();
-
-//_________________________________________________________________
-//ADD RUN MODAL
-//---------———————————————————————————————————————————–––––––––––––  
-
-$(document).ready(function(){
-    $('.modal').modal();
-  });
-
-
-$(document).ready(function () {
-    ajax.get("/members/runs", {
-            // params: { //don't need these b/c not passing other args
-            //     address: location,
-            //     key: googlemapsG
-            // }
-        })
-        .then(function (response) { //response is what's getting returned in das api call
-            console.log(`fastest pace: ${response}`);
-            fastestPaceG = response.averagePace;
-            fastestDistanceG = response.distance;
-            fastestTempG = response.temperature;
-            fastestWindMPHG = response.windMPH;
-            fastestdewPoint = response.dewPoint;
-            // $("#fast-pace").html("<div>" + fastestPaceG + "</div>");
-        });
-});
-
-
-</script>
-{{!-- <script type="text/javascript" src="js/darksky.js"></script>  --}}
-{{!-- <script type="text/javascript" src="js/scripts.js"></script> --}}
+<script type="text/javascript" src="js/all_runs.js"></script>
+<script type="text/javasript" src="js/darksky.js"></script>
+<script type="text/javasript" src="js/riegel.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/scriptsTest.js"></script>
 <script type="text/javascript" src="js/members.js"></script>
+<script type="text/javascript" src="js/bulma.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>

@@ -1,50 +1,83 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        </div>
+<nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <h1>PaceMaker</h1>
+        </a>
     </div>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Create Runner Profile</h2>
+
+
+<section class="hero is-light is-medium">
+    <div class="hero-body">
+        <div class="container">
+
+            <h2 class="title">Create Runner Profile</h2>
 
             <form class="signup_runner">
 
-                <div class="form-group">
-                    <label for="firstname">First name</label>
-                    <input type="text" class="form-control" id="fname-input" placeholder="Jane" required>
+                <div class="field">
+                    <div class="columns">
+                        <div class="column">
+                            <label class="label" for="firstname">First name</label>
+                            <div class="control has-icons-left">
+                                <input class="input" id="fname-input" placeholder="Jane" type="text" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <label class="label" for="lastname">Last name</label>
+                            <div class="control">
+                                <input class="input" id="lname-input" placeholder="Doe" type="text" required>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="lastname">Last name</label>
-                    <input type="text" class="form-control" id="lname-input" placeholder="Doe" required>
-                </div>
-                <div class="form-group">
-                    <label for="firstname">City</label>
-                    <input type="text" class="form-control" id="city-input" placeholder="Alexandria, VA" required>
-                </div>
-                <div class="form-group">
-                    <select id="sex">
-                        <option value="" disabled selected>Select your gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" name="bday" class="form-control" id="dob" min="1900-12-31" max="2050-12-31" required>
+                <div class="field">
+
+                    <label class="label" for="city">City</label>
+                    <div class="control has-icons-left">
+                        <input class="input" id="city-input" placeholder="Alexandria, VA" type="text" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-globe"></i>
+                        </span>
+                    </div>
                 </div>
 
-                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span> <span class="msg">Error</span>
+                <div class="field">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field">
+                                <label class="label" for="dob">Date of Birth</label>
+                                <input type="date" name="bday" class="input" id="dob" min="1900-12-31" max="2050-12-31" required>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <label class="label" for="sex">Gender</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select id="sex">
+                                        <option value="" disabled selected>Select your gender</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default">Create Runner</button>
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-danger">Create Runner</button>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>
 
-</div>
+</section>
 
 
 <script type="text/javascript" src="js/signup_runner.js"></script>
