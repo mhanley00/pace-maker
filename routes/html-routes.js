@@ -19,7 +19,7 @@ module.exports = function (app) {
     
     app.get("/all_runs", isAuthenticated, function (req, res) {
         
-        res.render("all_runs");
+        res.redirect("/runs");
     });
 
     app.get("/logout", function (req, res) {

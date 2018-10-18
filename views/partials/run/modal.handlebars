@@ -1,0 +1,61 @@
+<div id="modal1" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content box">
+        <h5 class="flow-text">Enter Race Info:</h5>
+        <div id="race-header">
+        </div>
+        <!-- Start Race time info -->
+        <form class="create_run">
+        <div class="columns">
+            <div class="field column">
+                <input placeholder="00" id="p-run-hours" type="text" class="validate" maxlength="3">
+                <label for="p-run-hours">Hour(s)</label>
+            </div>
+            <div class="field column">
+                <input placeholder="00" id="p-run-mins" type="text" class="validate" maxlength="2">
+                <label for="p-run-mins">Minute(s)</label>
+            </div>
+            <div class="field column">
+                <input placeholder="00" id="p-run-secs" type="text" class="validate" maxlength="2">
+                <label for="p-run-secs">Second(s)</label>
+            </div>
+        </div>
+        <!-- End Race time info -->
+        <!-- Start Race dist + weather info -->
+        <div class="columns">
+            <div class="field column">
+                <input placeholder="00 " id="p-run-dist" type="text" class="validate" maxlength="4">
+                <label for="p-run-dist"> Race Distance (Miles)</label>
+            </div>
+            <div class="field column">
+                <input placeholder="i.e. 63" id="p-dew" type="text" class="validate" maxlength="3">
+                <label for="p-dew">Race Dewpoint</label>
+            </div>
+            <div class="field column">
+                <input placeholder="i.e. " id="p-temp" type="text" class="validate" maxlength="3">
+                <label for="p-temp">Race Temperature (F)</label>
+            </div>
+            <div class="field column">
+                <input placeholder="00" id="p-wind-mph" type="text" class="validate" maxlength="3">
+                <label for="p-wind-mph"> Wind Speed (MPH)</label>
+            </div>
+        </div>
+
+
+        <div class="columns">
+            <div class="field column">
+                <input placeholder="City,State" id="run-location" type="text" class="validate">
+                <label for="current-location">Enter Run Location</label>
+            </div>
+        </div>
+        <div class="columns">
+            <button class="close-modal column" id="calculate-button" type="submit">Calculate</button>
+            {{!-- <a href="/members">
+                <div class="btn  blue waves-effect waves-light column" id="reset-button">Reset </div>
+            </a></div> --}}
+
+        </div>
+        </form>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-        $('.modal').modal();
+//        $('.modal').modal();
 
   var createRunForm = $("form.create_run");
   var distanceInput = $("input#p-run-dist");

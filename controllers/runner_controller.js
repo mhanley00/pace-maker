@@ -22,12 +22,12 @@ module.exports = function (app) {
         }).catch(function (err) {
             console.log("signup api error");
             console.log(err);
-//          res.json(err);
+            //          res.json(err);
             res.redirect(err);
             return;
         });
     });
-    
+
     app.post("/api/create", function (req, res) {
         console.log("createapi")
         console.log(req.body);
@@ -46,126 +46,108 @@ module.exports = function (app) {
             res.json(err);
         });
     });
-    
+
     app.post("/api/create_run", function (req, res) {
         console.log("runapi")
         console.log(req.body);
         db.Run.create({
-            distance: req.body.distance,
-            dewPoint: req.body.dewPoint,
-            temperature: req.body.temperature,
-            windMPH: req.body.windMPH,
-            location: req.body.location,
-            totalTime: req.body.totalTime,
-            RunnerId: req.user.id
-        })
-//            .then(function () {
-//            res.redirect(307, "/");
-//        })
-            .catch(function (err) {
-            console.log(err);
-            res.json(err);
-        });
-    });    
-
-
-    app.get("/members", isAuthenticated, function (req, res) {
-        db.User.findAll({
-                where: {
-                    id: req.user.id
-                }
+                distance: req.body.distance,
+                dewPoint: req.body.dewPoint,
+                temperature: req.body.temperature,
+                windMPH: req.body.windMPH,
+                location: req.body.location,
+                totalTime: req.body.totalTime,
+                RunnerId: req.user.id
             })
-            .then(function (dbUser) {
-                console.log("dbUser");
-                console.log(dbUser);
-                var data = {
-                    User: dbUser,
-//                    Runner: dbrunners,
-                    //            runs: dbruns
-                };
-                console.log(req.user)
-                console.log(data)
-                return res.render("members", data);
-
-                // INCLUDE ERROR HANDLING: IF NO DATA, REDIRECT TO LOGIN
-
+            //            .then(function () {
+            //            res.redirect(307, "/");
+            //        })
+            .catch(function (err) {
+                console.log(err);
+                res.json(err);
             });
     });
 
 
-   app.get("/members", isAuthenticated, function (req, res) {
-    db.User.findAll({
+    app.get('/members', isAuthenticated, function (req, res) {
+
+        var memberId = req.user.id;
+
+        db.User.findOne({
             where: {
-                id: req.user.id
-            }
-        })
-        .then(function (dbUser) {
-            console.log("dbUser");
-            console.log(dbUser);
-
-            db.Runner.findAll({
+                id: memberId
+            },
+            attributes: ['id', 'email', 'createdAt']
+        }).then(function (dbUser) {
+            db.Runner.findOne({
+                where: {
+                    UserId: memberId
+                }
+            }).then(function (dbRunner) {
+                db.Run.findAll({
                     where: {
-                        UserId: req.user.id
+                        RunnerId: memberId
                     }
-                })
-                .then(function (dbRunner) {
-                    console.log("dbRunner");
-                    console.log(dbRunner);
+                }).then(function (dbRun) {
                     var data = {
-                        User: dbUser,
-                        Runner: dbRunner,
-                        //            runs: dbruns
-                    };
-                    console.log(req.user)
-                    console.log(data)
-                    return res.render("members", data);
-                });
+                        User: dbUser.dataValues,
+                        Runner: dbRunner.dataValues,
+                        Run: []
+                    }
+                    
+                    for (var i = 0; i < dbRun.length; i++) {
+                        data.Run.push(dbRun[i].dataValues);
+                    }
+//                    console.log("datadatadata");
+//                    console.log(data);
+                    res.render("members", data);
 
-//        });
+                })
 
+            })
+        })
+    });
+    
+    app.get('/runs', isAuthenticated, function (req, res) {
 
-    // INCLUDE ERROR HANDLING: IF NO DATA, REDIRECT TO LOGIN
+        var memberId = req.user.id;
 
-});
+        db.User.findOne({
+            where: {
+                id: memberId
+            },
+            attributes: ['id', 'email', 'createdAt']
+        }).then(function (dbUser) {
+            db.Runner.findOne({
+                where: {
+                    UserId: memberId
+                }
+            }).then(function (dbRunner) {
+                db.Run.findAll({
+                    where: {
+                        RunnerId: memberId
+                    }
+    //            order: [
+    //                ["dateTime", "ASC"]
+    //            ]
+                }).then(function (dbRun) {
+                    var data = {
+                        User: dbUser.dataValues,
+                        Runner: dbRunner.dataValues,
+                        Run: []
+                    }
+                    
+                    for (var i = 0; i < dbRun.length; i++) {
+                        data.Run.push(dbRun[i].dataValues);
+                    }
+                    console.log("datadatadata");
+                    console.log(data);
+                    res.render("all_runs", data)
 
-//        db.Runner.findAll({
-//                where: {
-//                    UserId: req.user.id
-//                }
-//            })
-//            .then(function (dbRunner) {
-//                console.log("dbRunner");
-//                console.log(dbRunner);
-//                var data = {
-////                    User: dbUser,
-//                    Runner: dbRunner,
-//                    //            runs: dbruns
-//                };
-//                console.log(req.runner)
-//                return res.render("members", data);
-//
-//                // INCLUDE ERROR HANDLING: IF NO DATA, REDIRECT TO LOGIN
-//
-//            });
+                })
 
-});
-
-
-//WORKING ROUTE from runController.js in old project files
-//    app.get("/runner", function(res,req) {
-//        db.Run.findAll({
-//            include: [db.Runner],
-//            order: [
-//                ["dateTime", "ASC"]
-//            ]
-//        }).then(function(dbRuns) {
-//            
-//            var data = {
-//                runs: dbRuns
-//            };
-//            return res.render("dashboard", data);
-//        });
-//    
-//});
+            })
+        })
+    });
 
 };
