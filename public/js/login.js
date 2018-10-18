@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var loginForm = $("form.login");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
+  var emailInput = $("input#email-l-input");
+  var passwordInput = $("input#password-l-input");
 
   loginForm.on("submit", function(event) {
     event.preventDefault();
@@ -27,6 +27,7 @@ $(document).ready(function() {
       window.location.replace(data);
     }).catch(function(err) {
       console.log(err);
+        alert("Incorrect Email or Password")
     });
   }
 

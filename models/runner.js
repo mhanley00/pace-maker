@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         sex: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
 //            allowNull: false
         },
         dob: {

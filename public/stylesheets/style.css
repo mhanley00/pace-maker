@@ -1,12 +1,5 @@
-form.signup,
-form.login {
-  margin-top: 50px;
-}
-.navbar-fixed nav {
-  position: fixed;
-  top: 0;
+h1 {font-size: 1.8em;}
 
-}
-/* body {
-  background-color: blue;
-} */
+h2 {font-size: 1.6em;}
+
+hr {background-color: #00d1b2;}

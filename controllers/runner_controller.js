@@ -14,9 +14,17 @@ module.exports = function (app) {
             password: req.body.password
         }).then(function () {
             res.redirect(307, "/api/create_runner");
+        }).catch(function (dupl) {
+            if (dupl.parent.errno == 1062) {
+                console.log("This email has already been registered")
+                res.redirect(dupl);
+            }
         }).catch(function (err) {
+            console.log("signup api error");
             console.log(err);
-            res.json(err);
+//          res.json(err);
+            res.redirect(err);
+            return;
         });
     });
     
@@ -33,6 +41,7 @@ module.exports = function (app) {
         }).then(function () {
             res.redirect(307, "/api/runner_created");
         }).catch(function (err) {
+            console.log("create runner api error");
             console.log(err);
             res.json(err);
         });

@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
                 validate: {}
             },
             totalTime: {
-                type: DataTypes.TIME,
+                type: DataTypes.DECIMAL(5,2),
                 allowNull: false,
                 validate: {}
             },

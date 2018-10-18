@@ -4,20 +4,27 @@ var passport = require("../config/passport");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
-
-    app.get("/login", function (req, res) {
-        if (req.user) {
-            res.redirect("/members");
-        }
-        res.render("login");
-    });
-
+    
     app.get("/", function (req, res) {
         if (req.user) {
             res.redirect("/members");
         }
-        res.render("signup");
+        res.render("landing");
     });
+
+//    app.get("/login", function (req, res) {
+//        if (req.user) {
+//            res.redirect("/members");
+//        }
+//        res.render("login");
+//    });
+
+//    app.get("/", function (req, res) {
+//        if (req.user) {
+//            res.redirect("/members");
+//        }
+//        res.render("signup");
+//    });
     
     app.get("/create", isAuthenticated, function (req, res) {
         

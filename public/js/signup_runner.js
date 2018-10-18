@@ -3,7 +3,7 @@ $(document).ready(function() {
   var firstNameInput = $("input#fname-input");
   var lastNameInput = $("input#lname-input");
   var cityInput = $("input#city-input");
-  var sexInput = $("input#sex");
+  var sexInput = $("select#sex");
   var dobInput = $("input#dob");
     
     console.log("load signup_runner")

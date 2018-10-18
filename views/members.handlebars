@@ -1,39 +1,48 @@
-<div class="navbar-fixed">
-    <nav class="nav-wrapper blue">
-        <div class="container">
-            <a href="#" class="brand-logo">PaceMaker</a>
+<nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <h1>PaceMaker</h1>
+        </a>
 
-            <!-- Creating a toggle menu  -->
-            <!-- Data-target needs to equal the id of the links you want -->
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-            <a href="#" class="sidenav-trigger" data-target="drop-link">
-                <i class="material-icons">Menu</i>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a href="/members" class="navbar-item">
+                Home
             </a>
 
-            <!-- Class right moves the UL to the right -->
-            <!-- class hide-on-med makes the list items toggle.  -->
+            <a href="/all_runs" class="navbar-item">
+                Runs
+            </a>
 
-            <ul class="right hide-on-med-and-down">
-                <li>
-                    <a href="/members">Home</a>
-                </li>
-                <li>
-                    <a href="/all_runs">All Runs</a>
-                </li>
-                <li>
-                    <!-- Modal Trigger in normal nav bar-->
-                    <button data-target="modal1" class="btn modal-trigger">Add a Run</button>
-                </li>
-                <li>
-                    <a class="navbar-brand" href="/logout">
-                        Logout
-                    </a>
-                </li>
-            </ul>
         </div>
-    </nav>
-</div>
 
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+
+                    <a data-target="modal1" class="button is-danger modal-trigger" id="showModal">
+                        Add a Run
+                    </a>
+
+                    <a href="/logout" class="button is-light">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<!--
 <ul class="sidenav" id="drop-link">
     <li>
         <a href="">Home</a>
@@ -42,7 +51,6 @@
         <a href="/all_runs">All Runs</a>
     </li>
     <li>
-        <!-- Modal Trigger in Side Bar -->
         <button data-target="modal1" class="btn modal-trigger">Add a Run</button>
     </li>
     <li>
@@ -50,13 +58,14 @@
             Logout</a>
     </li>
 </ul>
+-->
 
 {{!-- WELCOME MESSAGE --}}
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h4>Welcome, {{#each User}}<span>{{this.email}}</span> {{/each}}<span class="member-name"></span>
-            {{!-- <h3>Welcome, {{#each Runner}}<span>{{this.firstName}}</span> {{/each}}<span class="member-name"></span> --}}
+                {{!-- <h3>Welcome, {{#each Runner}}<span>{{this.firstName}}</span> {{/each}}<span class="member-name"></span> --}}
             </h4>
             <hr>
         </div>
@@ -64,65 +73,68 @@
 </div>
 {{!-- END WELCOME MESSAGE --}}
 
-
 <!-- MODAL STRUCTURE -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h5 class="flow-text">Enter Race Info:</h5>
-        <div id="race-header">
-        </div>
-        <!-- Start Race time info -->
-        <div class="row">
-            <div class="input-field col s4 m4 l4">
-                <input placeholder="00" id="p-run-hours" type="text" class="validate" maxlength="3">
-                <label for="p-run-hours">Hour(s)</label>
+<!--<div class="container" id="app">-->
+    <div id="modal1" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content box">
+            <h5 class="flow-text">Enter Race Info:</h5>
+            <div id="race-header">
             </div>
-            <div class="input-field col s4 m4 l4">
-                <input placeholder="00" id="p-run-mins" type="text" class="validate" maxlength="2">
-                <label for="p-run-mins">Minute(s)</label>
-            </div>
-            <div class="input-field col s4 m4 l4">
-                <input placeholder="00" id="p-run-secs" type="text" class="validate" maxlength="2">
-                <label for="p-run-secs">Second(s)</label>
-            </div>
-            <!-- End Race time info -->
-            <!-- Start Race dist + weather info -->
+            <!-- Start Race time info -->
             <div class="row">
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="00 " id="p-run-dist" type="text" class="validate" maxlength="4">
-                    <label for="p-run-dist"> Race Distance (Miles)</label>
+                <div class="input-field col s4 m4 l4">
+                    <input placeholder="00" id="p-run-hours" type="text" class="validate" maxlength="3">
+                    <label for="p-run-hours">Hour(s)</label>
                 </div>
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="i.e. 63" id="p-dew" type="text" class="validate" maxlength="3">
-                    <label for="p-dew">Race Dewpoint</label>
+                <div class="input-field col s4 m4 l4">
+                    <input placeholder="00" id="p-run-mins" type="text" class="validate" maxlength="2">
+                    <label for="p-run-mins">Minute(s)</label>
                 </div>
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="i.e. " id="p-temp" type="text" class="validate" maxlength="3">
-                    <label for="p-temp">Race Temperature (F)</label>
+                <div class="input-field col s4 m4 l4">
+                    <input placeholder="00" id="p-run-secs" type="text" class="validate" maxlength="2">
+                    <label for="p-run-secs">Second(s)</label>
                 </div>
-                <div class="input-field col s3 m3 l3">
-                    <input placeholder="00" id="p-wind-mph" type="text" class="validate" maxlength="3">
-                    <label for="p-wind-mph"> Wind Speed (MPH)</label>
+                <!-- End Race time info -->
+                <!-- Start Race dist + weather info -->
+                <div class="row">
+                    <div class="input-field col s3 m3 l3">
+                        <input placeholder="00 " id="p-run-dist" type="text" class="validate" maxlength="4">
+                        <label for="p-run-dist"> Race Distance (Miles)</label>
+                    </div>
+                    <div class="input-field col s3 m3 l3">
+                        <input placeholder="i.e. 63" id="p-dew" type="text" class="validate" maxlength="3">
+                        <label for="p-dew">Race Dewpoint</label>
+                    </div>
+                    <div class="input-field col s3 m3 l3">
+                        <input placeholder="i.e. " id="p-temp" type="text" class="validate" maxlength="3">
+                        <label for="p-temp">Race Temperature (F)</label>
+                    </div>
+                    <div class="input-field col s3 m3 l3">
+                        <input placeholder="00" id="p-wind-mph" type="text" class="validate" maxlength="3">
+                        <label for="p-wind-mph"> Wind Speed (MPH)</label>
+                    </div>
                 </div>
+
             </div>
 
-        </div>
-
-        <div class="row">
-            <div class="input-field col s4 m4 l4">
-                <input placeholder="City,State" id="run-location" type="text" class="validate">
-                <label for="current-location">Enter Run Location</label>
+            <div class="row">
+                <div class="input-field col s4 m4 l4">
+                    <input placeholder="City,State" id="run-location" type="text" class="validate">
+                    <label for="current-location">Enter Run Location</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="modal-close btn pulse blue waves-effect waves-light col s12 m3 l3" id="calculate-button">Calculate</div>
-            {{!-- <a href="/members">
+            <div class="row">
+                <button class="close-modal btn pulse blue waves-effect waves-light col s12 m3 l3" id="calculate-button">Calculate</button>
+                {{!-- <a href="/members">
                 <div class="btn  blue waves-effect waves-light col s12 m2 l2" id="reset-button">Reset </div>
             </a></div> --}}
 
+            </div>
         </div>
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
-</div>
+<!--</div>-->
 
 <!-- Start Main Section -->
 
@@ -166,166 +178,162 @@
 </div>
 
 <div class="container" id="another-container">
-<div class="row">
-    {{!-- <div class="col s12 m2 l2">
+    <div class="row">
+        {{!-- <div class="col s12 m2 l2">
         <label>Your Race Pace</label>
         <div id="race-pace"></div>
     </div>
     <div class="col s12 m2 l2" id="race-ag">
         <label>Your Age Grade</label>
     </div> --}}
-    <div class="col s12 m4 l4">
-        <label>Predicted Race Times</label>
-        <div id="predicted-time"></div>
+        <div class="col s12 m4 l4">
+            <label>Predicted Race Times</label>
+            <div id="predicted-time"></div>
+        </div>
+        <div class="col s12 m2 l2">
+            <label>Predicted Paces</label>
+            <div id="predicted-pace"></div>
+        </div>
+        <div class="col s12 m2 l2" id="predicted-ag">
+            <!-- <label>Predicted Age Grade</label> -->
+        </div>
     </div>
-    <div class="col s12 m2 l2">
-        <label>Predicted Paces</label>
-        <div id="predicted-pace"></div>
-    </div>
-    <div class="col s12 m2 l2" id="predicted-ag">
-        <!-- <label>Predicted Age Grade</label> -->
-    </div>
-</div>
 </div>
 
 <div class="container" id="morrrre">
-<div class="row">
-    {{!-- <div class="col s12 m2 l2">
+    <div class="row">
+        {{!-- <div class="col s12 m2 l2">
         <label>Your Race Pace</label>
         <div id="race-pace"></div>
     </div>
     <div class="col s12 m2 l2" id="race-ag">
         <label>Your Age Grade</label>
     </div> --}}
-    <div class="col s12 m4 l4">
-        <label>Riegel Predicted Race Times</label>
-        <div id="riegel-predicted-time"></div>
+        <div class="col s12 m4 l4">
+            <label>Riegel Predicted Race Times</label>
+            <div id="riegel-predicted-time"></div>
+        </div>
+        <div class="col s12 m2 l2">
+            <label>Riegel Predicted Paces</label>
+            <div id="riegel-predicted-pace"></div>
+        </div>
+        <div class="col s12 m2 l2" id="predicted-ag">
+            <!-- <label>Predicted Age Grade</label> -->
+        </div>
     </div>
-    <div class="col s12 m2 l2">
-        <label>Riegel Predicted Paces</label>
-        <div id="riegel-predicted-pace"></div>
-    </div>
-    <div class="col s12 m2 l2" id="predicted-ag">
-        <!-- <label>Predicted Age Grade</label> -->
-    </div>
-</div>
 </div>
 
 <!-- Script CDNS -->
 {{!--
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>-->
 {{!-- MOMENT JS --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script>
     // Need this for the side nav bar to be responsive.
     // Put at the end of the html
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.sidenav').sidenav();
     });
     $('.dropdown-trigger').dropdown();
 
-//_________________________________________________________________
-//LOAD RIEGEL + DARK SKY
-//---------———————————————————————————————————————————–––––––––––––  
-$(document).ready(function() {
-    getLocation();
-    velocityRiegel(13.1, 7200, 3.1);
-    velocityRiegel(13.1, 7200, 6.2);
-    velocityRiegel(13.1, 7200, 13.1);
+    //_________________________________________________________________
+    //LOAD RIEGEL + DARK SKY
+    //---------———————————————————————————————————————————–––––––––––––  
+    $(document).ready(function() {
+        getLocation();
+        velocityRiegel(13.1, 7200, 3.1);
+        velocityRiegel(13.1, 7200, 6.2);
+        velocityRiegel(13.1, 7200, 13.1);
     });
 
 
-//_________________________________________________________________
-//DARK SKY API W/ BROWSER GEOLOCATION
-//---------———————————————————————————————————————————–––––––––––––  
+    //_________________________________________________________________
+    //DARK SKY API W/ BROWSER GEOLOCATION
+    //---------———————————————————————————————————————————–––––––––––––  
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        $("#curr-location").append("<div>Geolocation is not supported by this browser.<div>");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            $("#curr-location").append("<div>Geolocation is not supported by this browser.<div>");
+        }
     }
-}
 
-function showPosition(position) {
-    // alert("this is location" + position.coords.latitude+position.coords.longitude) ;
-    $("#latitude").html("<div>" + position.coords.latitude + "</div>"); 
-    $("#longitude").html("<div>" + position.coords.longitude + "</div>"); 
-    // userLatG = position.coords.latitude;
-    // userLonG = position.coords.longitude;
-    tempInput(position.coords.latitude, position.coords.longitude);
-}
-
-function tempInput(lat, long) {
-
-    console.log("long: " + long);
-    console.log("lat: " + lat);
-    // var long= lngLatArray[1];
-    // var lat= lngLatArray[0];
-    console.log("long/lattitude:")
-    // console.log(lngLatArray);
-    // var long= lngResult;
-    // var lat= latResult;
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/"+ darkskyG + "/" + lat + "," + long;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response1) {
-        console.log("darkskyAPI:")
-        console.log(response1);
-        var currentTemp = response1.currently.temperature;
-        var currentDew = response1.currently.dewPoint;
-        var currentWs = response1.currently.windSpeed;
-        
-        // Appending weather info onto DOM
-        $("#today-temp").html("<div>" + currentTemp + "</div>");
-        console.log("TEMP NOW: "+currentTemp);
-        
-        $("#today-dew").html("<div>" + currentDew + "</div>");
-        console.log("DEW NOW: "+currentDew);
-        
-        $("#today-ws").html("<div>" + currentWs + "</div>");
-        console.log("WIND NOW: "+currentWs);
-    });
-};
-//_________________________________________________________________
-//RIEGEL FORMULA - predicting today's 5k/10k/HMP
-//---------———————————————————————————————————————————–––––––––––––   
-function velocityRiegel(D1, T1, D2) {
-    // using Riegel prediction formula t2 = t1 × (d2 / d1)1.06:
-    if (D2===3.1){
-        tempo = `5k`;
-        type = `Speed Work`;
+    function showPosition(position) {
+        // alert("this is location" + position.coords.latitude+position.coords.longitude) ;
+        $("#latitude").html("<div>" + position.coords.latitude + "</div>");
+        $("#longitude").html("<div>" + position.coords.longitude + "</div>");
+        // userLatG = position.coords.latitude;
+        // userLonG = position.coords.longitude;
+        tempInput(position.coords.latitude, position.coords.longitude);
     }
-    else if (D2===6.2){
-        tempo = `10k`;
-        type = `Short Tempo`;
-    }
-    else if (D2===13.1){
-        tempo = `HMP`;
-        type = `Long Tempo`;
-    }
-    else {
-        tempo = D2;
-        type = "";
-    }
-    var distances = D2 / D1;
-    var distPow = Math.pow(distances, 1.07);
-    //1.07 is standard for non-pro runners in Riegel formula
-    var T2secs = T1 * distPow; //this is now the new predicted time in seconds
-    var T2pace = Math.floor(T2secs / D2);
 
-    console.log("tempo: "+tempo);
-    console.log("moment says: " + moment().startOf('day').seconds(T2secs).format('H:mm:ss'));
-    $(`#riegel-predicted-time`).append(`<div><b>${tempo}</b>: ${moment().startOf('day').seconds(T2secs).format('H:mm:ss')} </div>`);
-    $(`#riegel-predicted-pace`).append(`<div><b>${tempo}</b> ${type}: ${moment().startOf('day').seconds(T2pace).format('mm:ss')} </div>`);
-}
+    function tempInput(lat, long) {
 
-//end of RIEGEL FORMULA
+        console.log("long: " + long);
+        console.log("lat: " + lat);
+        // var long= lngLatArray[1];
+        // var lat= lngLatArray[0];
+        console.log("long/lattitude:")
+        // console.log(lngLatArray);
+        // var long= lngResult;
+        // var lat= latResult;
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkskyG + "/" + lat + "," + long;
 
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response1) {
+            console.log("darkskyAPI:")
+            console.log(response1);
+            var currentTemp = response1.currently.temperature;
+            var currentDew = response1.currently.dewPoint;
+            var currentWs = response1.currently.windSpeed;
+
+            // Appending weather info onto DOM
+            $("#today-temp").html("<div>" + currentTemp + "</div>");
+            console.log("TEMP NOW: " + currentTemp);
+
+            $("#today-dew").html("<div>" + currentDew + "</div>");
+            console.log("DEW NOW: " + currentDew);
+
+            $("#today-ws").html("<div>" + currentWs + "</div>");
+            console.log("WIND NOW: " + currentWs);
+        });
+    };
+    //_________________________________________________________________
+    //RIEGEL FORMULA - predicting today's 5k/10k/HMP
+    //---------———————————————————————————————————————————–––––––––––––   
+    function velocityRiegel(D1, T1, D2) {
+        // using Riegel prediction formula t2 = t1 × (d2 / d1)1.06:
+        if (D2 === 3.1) {
+            tempo = `5k`;
+            type = `Speed Work`;
+        } else if (D2 === 6.2) {
+            tempo = `10k`;
+            type = `Short Tempo`;
+        } else if (D2 === 13.1) {
+            tempo = `HMP`;
+            type = `Long Tempo`;
+        } else {
+            tempo = D2;
+            type = "";
+        }
+        var distances = D2 / D1;
+        var distPow = Math.pow(distances, 1.07);
+        //1.07 is standard for non-pro runners in Riegel formula
+        var T2secs = T1 * distPow; //this is now the new predicted time in seconds
+        var T2pace = Math.floor(T2secs / D2);
+
+        console.log("tempo: " + tempo);
+        console.log("moment says: " + moment().startOf('day').seconds(T2secs).format('H:mm:ss'));
+        $(`#riegel-predicted-time`).append(`<div><b>${tempo}</b>: ${moment().startOf('day').seconds(T2secs).format('H:mm:ss')} </div>`);
+        $(`#riegel-predicted-pace`).append(`<div><b>${tempo}</b> ${type}: ${moment().startOf('day').seconds(T2pace).format('mm:ss')} </div>`);
+    }
+
+    //end of RIEGEL FORMULA
 
 </script>
 {{!-- <script type="text/javasript" src="js/darksky.js"></script> 
@@ -333,3 +341,5 @@ function velocityRiegel(D1, T1, D2) {
 {{!-- <script type="text/javascript" src="js/scripts.js"></script> --}}
 <script type="text/javascript" src="js/members.js"></script>
 <script type="text/javascript" src="js/scriptsTest.js"></script>
+<script type="text/javascript" src="js/bulma.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
